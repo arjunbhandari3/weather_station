@@ -1,0 +1,83 @@
+<% include includes/header.ejs %>
+</header>
+
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="inner-header">
+                    <h3>About</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-xs-12">
+                <div class="about-content">
+                    <h3>About Weather Station</h3>
+                    <p>Weather Station is a site where one can check their location's weather condition. It is a
+                        semester project developed by undegraduate students of Kathmandu University. Anyone can check
+                        their current location's or of any place's weather condition here.</p>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-xs-12">
+                <div class="about-content">
+                    <h5>Hardwares used: </h5>
+                    <ul>
+                        <li>- Raspberry Pi</li>
+                        <li>- Temperature Sensor</li>
+                        <li>- Humidity Sensor</li>
+                        <li>- Pressure Sensor</li>
+                        <li>- Gas Sensor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="how-it-works section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">How It Works?</h2>
+            <p>Check the working Process of Weather Stations</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="work-process">
+                    <span class="process-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <h4>Weather Data Detection</h4>
+                    <p>The weather data are detected with the help of Raspberry pi and sensors such as temperature, gas,
+                        pressure, dust, etc. </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="work-process step-2">
+                    <span class="process-icon">
+                        <i class="fas fa-database"></i>
+                    </span>
+                    <h4>Weather Data Collection</h4>
+                    <p>The detected data are then inserted into the database. In every 15 seconds, data are inserted
+                        into the database and the last inserted data is send to display as current weather data.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="work-process step-3">
+                    <span class="process-icon">
+                        <i class="fas fa-tv"></i>
+                    </span>
+                    <h4>Display Weather Data</h4>
+                    <p>With the help of datas in the database, the received current weather datas such as temperature,
+                        pressure, humidity, pollution, etc are displayed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<% include includes/footer.ejs %>

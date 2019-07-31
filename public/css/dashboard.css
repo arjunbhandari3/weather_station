@@ -1,0 +1,10 @@
+.dashboard-content {
+    padding-top: 100px;
+    position: relative;
+}
+
+.dashboard-content .content-area h4 {
+    font-size: 26px !important;
+    font-weight: 500;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,142 @@
+<% include includes/header.ejs %>
+<div class="container">
+    <div class="row space-100 justify-content-center">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="contents">
+                <h2 class="head-title">Check your Location's Weather Condition</h2>
+                <p>Anyone can check their current location's or of any place's weather condition here.</p>
+                <div class="weather-search-form">
+                    <form action="/getweather" method="post">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-4 col-xs-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="city" type="text" placeholder="City Name"
+                                        required>
+                                    <a id="input-form"><i class="fas fa-map-marker-alt"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="search-data-container">
+                                        <label class="styled-select" required>
+                                            <select name="unit">
+                                                <option>Temperature Unit</option>
+                                                <option value="metric">Celcius</option>
+                                                <option value="imperial">Fahrenheit</option>
+                                                <option value="">Kelvin</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <a id="input-from"><i class="fas fa-chevron-down"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-xs-12">
+                                <button type="submit" class="button btn-primary"><i class="fas fa-search"></i> Check
+                                    Weather</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><br>
+                <p class="head-title pull-left">Check current Location's Weather here.
+                    <form action="/checkweather" method="post">
+                        <input type="hidden" id="lat" name="lat">
+                        <input type="hidden" id="lon" name="lon">
+                        <button class="btn-primary pull-left" type="submit"
+                            style="text-decoration: underline !important;">
+                            <i class="fas fa-paper-plane"></i> Check Weather
+                        </button>
+                    </form>
+                </p>
+            </div>
+            <div class="widget text-center">
+                <h3 class="block-title">Check More details below.</h3>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+<section class="data section bg-gray" id="full-details">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Full Details</h2>
+            <p>Check your Full data Details of weather</p>
+        </div>
+        <% if (error !== null) { %>
+        <div class="alert alert-danger alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong><%= error %></strong>
+        </div>
+        <% } %>
+
+        <% if(weather !== null){ %>
+        <div class="about-content">
+            <h3>The weather condition of <%= city %> at <%= time %> is :</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-xs-12 w-data">
+                    <a>
+                        <h3>City</h3>
+                        <h3><%= city %></h3>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 w-data">
+                    <a>
+                        <h3>Latitude & Longitude</h3>
+                        <h3><%= latitude %>&deg; / <%= longitude %>&deg;</h3>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 w-data ">
+                    <a>
+                        <h3>Temperature</h3>
+                        <h3><%= temp %></h3>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 w-data border-right-0">
+                    <a>
+                        <h3>Pressure</h3>
+                        <h3><%= pressure %></h3>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 w-data border-bottom-0">
+                    <a>
+                        <h3>Humidity</h3>
+                        <h3><%= humidity %></h3>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 w-data border-bottom-0">
+                    <a>
+                        <h3>Rainfall</h3>
+                        <h3><%= rainfall %></h3>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 w-data border-bottom-0">
+                    <a>
+                        <h3>Wind Speed</h3>
+                        <h3><%= speed %></h3>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 w-data border-right-0 border-bottom-0">
+                    <a>
+                        <h3>Cloudiness</h3>
+                        <h3><%= cloudiness %></h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</section>
+<script>
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(location => {
+            document.getElementById("lat").value = location.coords.latitude;
+            document.getElementById("lon").value = location.coords.longitude;
+        });
+    } else {
+        alert("This browser does not support HTML Geolocation.");
+    }
+</script>
+<% include includes/footer.ejs %>
